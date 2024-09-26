@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Question</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .quiz-container {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #0277bd;
+        }
+
+        .question-text {
+            font-size: 1.2em;
+            margin: 20px 0;
+            color: #0277bd;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .option {
+            background-color: #e0f7fa;
+            border-radius: 25px;
+            padding: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background-color 0.3s ease;
+        }
+
+        .option.selected {
+            background-color: #81d4fa;
+        }
+
+        .option:hover {
+            background-color: #b3e5fc;
+        }
+
+        .option input {
+            margin-right: 10px;
+            display: none;
+        }
+
+        .option input[type="radio"]:checked + span {
+            font-weight: bold;
+        }
+
+        /* Submit button */
+        .submit-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #0277bd;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .submit-btn:hover {
+            background-color: #01579b;
+        }
+
+        /* Result message */
+        .result-message {
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #00796b;
+        }
+
+        /* Background decorative elements */
+        .background-images {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .background-images img {
+            position: absolute;
+        }
+
+        .background-images .plant {
+            top: 10px;
+            left: 10px;
+            width: 60px;
+        }
+
+        .background-images .orange {
+            top: 30px;
+            right: 20px;
+            width: 60px;
+        }
+
+        .background-images .banana {
+            top: 130px;
+            right: 20px;
+            width: 80px;
+        }
+
+        .background-images .shoe {
+            bottom: 10px;
+            left: 20px;
+            width: 80px;
+        }
+
+        .background-images .bicycle {
+            bottom: 10px;
+            right: 20px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h2>Question 6/13</h2>
+        <p class="question-text">Have you practiced sport or any physical activity out of your working hours at least 30 min or more during the last month?</p>
+        
+        <form id="quizForm">
+            <div class="options">
+                <label class="option">
+                    <input type="radio" name="activity" value="A" checked>
+                    <span>3 times or more per week</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="activity" value="B">
+                    <span>1 or 2 times per week</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="activity" value="C">
+                    <span>Less than 4 times per month</span>
+                </label>
+                <label class="option">
+                    <input type="radio" name="activity" value="D">
+                    <span>I don't practice sport during the month</span>
+                </label>
+            </div>
+            <button type="submit" class="submit-btn">Submit Answer</button>
+        </form>
+
+        <div class="result-message" id="resultMessage"></div>
+
+        <!-- Background images -->
+        <div class="background-images">
+            <img class="plant" src="https://tse2.mm.bing.net/th?id=OIP.dO9SFR77w0mKeDUj_Lmh5gHaEK&pid=Api&P=0&h=180" alt="Plant">
+            <img class="orange" src="https://img.icons8.com/plasticine/100/000000/orange.png" alt="Orange">
+            <img class="shoe" src="https://img.icons8.com/plasticine/100/000000/sneaker.png" alt="Shoe">
+            <img class="bicycle" src="https://tse1.mm.bing.net/th?id=OIP.MovCtlrCMEag-lrXyCLFKAHaEK&pid=Api&P=0&h=180" alt="Bicycle">
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('quizForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent page refresh
+
+            // Get the selected option
+            const selectedOption = document.querySelector('input[name="activity"]:checked').nextElementSibling.textContent;
+            
+            // Display the result
+            document.getElementById('resultMessage').textContent = `You selected: ${selectedOption}`;
+        });
+    </script>
+</body>
+</html>
